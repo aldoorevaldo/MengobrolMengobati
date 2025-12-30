@@ -1,0 +1,100 @@
+@extends('layouts.psikiater-layout')
+
+@section('title','Dashboard Psikiater - '.$psikiater->name)
+
+@section('content')
+
+{{-- HEADER CARD --}}
+<div class="psy-header">
+  <h1>{{ $psikiater->name }}</h1>
+  <div class="psy-sub">{{ $psikiater->hospital ?? '—' }}</div>
+  <p class="psy-muted">Manage incoming consultation bookings</p>
+</div>
+
+@if(session('success'))
+  <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+@if(session('error'))
+  <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
+
+{{-- BOOKING CARD --}}
+<div class="psy-card">
+  <div class="psy-card-head">
+    <h4>List of Bookings</h4>
+    <span class="psy-count">{{ $bookings->total() ?? $bookings->count() }} Booking</span>
+  </div>
+
+  @if($bookings->isEmpty())
+    <div class="alert alert-info mb-0">No booking data available.</div>
+  @else
+    <div class="table-responsive">
+      <table class="table psy-table align-middle">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Services</th>
+            <th>Schedule</th>
+            <th>Status</th>
+            <th class="text-end">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($bookings as $b)
+          <tr>
+            <td>
+              <div class="fw-semibold">{{ optional($b->user)->name ?? 'User deleted.' }}</div>
+              <small class="text-muted">{{ optional($b->user)->email ?? '-' }}</small>
+            </td>
+
+            <td>{{ $b->service ?? '-' }}</td>
+
+            <td>
+              {{ $b->scheduled_at
+                ? \Carbon\Carbon::parse($b->scheduled_at)->translatedFormat('d M Y, H:i')
+                : '-' }}
+            </td>
+
+            <td>
+              @php $status = $b->status; @endphp
+              <span class="badge
+                @if($status=='pending') bg-warning text-dark
+                @elseif($status=='confirmed') bg-success
+                @elseif($status=='rejected') bg-danger
+                @elseif($status=='finished') bg-secondary
+                @endif">
+                {{ ucfirst($status) }}
+              </span>
+            </td>
+
+            <td class="text-end">
+              @if($status === 'pending')
+                <a href="{{ route('bookings.approve.confirm',$b->id) }}" class="btn btn-sm btn-success">Approve</a>
+                <a href="{{ route('bookings.reject.confirm',$b->id) }}" class="btn btn-sm btn-danger">Reject</a>
+
+              @elseif($status === 'confirmed')
+                <form method="POST" action="{{ route('psikiater.booking.finish',$b->id) }}" class="d-inline">
+                  @csrf
+                  <button class="btn-complete btn-sm"
+                    onclick="return confirm('Mark session as complete?')">
+                    Complete
+                  </button>
+                </form>
+
+              @else
+                <span class="text-muted small">-</span>
+              @endif
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-3">
+      {{ $bookings->links() }}
+    </div>
+  @endif
+</div>
+
+@endsection

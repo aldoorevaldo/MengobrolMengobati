@@ -1,0 +1,188 @@
+:root{
+  --bg-gradient: linear-gradient(135deg, #ACDFC2 0%, #81B1D9 100%);
+  --nav-solid: #5A7863;
+  --white: #ffffff;
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-gradient);
+  color: var(--white);
+}
+
+/* =========================
+   NAVBAR CONTAINER
+========================= */
+.navbar-custom{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color .35s ease,
+    backdrop-filter .35s ease,
+    box-shadow .35s ease;
+}
+
+/* ===== TOP STATE (BLUR) ===== */
+.navbar-blur{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  box-shadow: none;
+}
+
+/* ===== SCROLL STATE ===== */
+.navbar-solid{
+  background: var(--nav-solid);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   INNER LAYOUT
+========================= */
+.navbar-custom .container{
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* =========================
+   BRAND + LOGO
+========================= */
+.navbar-brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.navbar-logo{
+  height: 44px;
+  width: auto;
+  /* display: block; */
+}
+
+/* =========================
+   NAV LINKS (MENU BAWAH)
+========================= */
+.navbar-nav{
+  display: flex;
+  gap: 36px;
+  margin-top: 4px;
+}
+
+.navbar .nav-link{
+  color: rgba(255,255,255,0.95) !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 0;
+  position: relative;
+
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* underline hover */
+.navbar .nav-link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width .25s ease;
+}
+
+.navbar .nav-link:hover::after{
+  width: 100%;
+}
+
+.navbar .nav-link:hover{
+  opacity: .9;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 992px) {
+
+  /* Navbar container jadi kolom */
+  .navbar-custom .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Brand di tengah */
+  .navbar-brand {
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  /* Toggler di kanan */
+  .navbar-toggler {
+    position: absolute;
+    right: 16px;
+    top: 18px;
+  }
+
+  /* Menu turun ke bawah */
+  .navbar-collapse {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .navbar-nav {
+    gap: 12px;
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .navbar-logo {
+    height: 34px;
+  }
+
+  .brand-text {
+    font-size: 16px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: rgba(11, 59, 54, 0.95);
+    border-radius: 12px;
+    padding: 12px 0;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  }
+}

@@ -1,0 +1,228 @@
+/* =========================
+   AUTH PAGE BASE
+========================= */
+.auth-page {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  background: linear-gradient(135deg, #ACDFC2 0%, #81B1D9 100%);
+}
+
+/* =========================
+   WRAPPER
+========================= */
+.auth-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+.auth-left {
+  position: relative;
+  width: 600px;        /* sesuaikan ukuran logo */
+  max-width: 100%;
+}
+
+.logo-img {
+  width: 80%;
+  display: block;
+  margin: 40px auto 0 auto;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+.auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   CARD
+========================= */
+.auth-card {
+  width: 60%;
+  max-width: 400px;
+  padding: 30px 20px 30px 20px;
+  border-radius: 18px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.auth-card .mb-3 {
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.auth-card input::placeholder {
+  color: #ffffff;
+}
+
+.auth-card h3 {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.auth-card .subtitle {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.auth-card-2 {
+  width: 60%;
+  max-width: 400px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 18px;
+  color: #ffffff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.auth-card-2 .mb-3 {
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.auth-card-2 input::placeholder {
+  color: #ffffff;
+}
+
+.auth-card-2 h3 {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.auth-card-2 .subtitle {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+.form-control {
+  height: 42px;
+  font-size: 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  background: none;
+  color: #ffffff;
+}
+
+.form-control:focus {
+  color: #ffffff;
+  box-shadow: none;
+  border-color: #5A7863;
+  background: none;
+  backdrop-filter: blur(5px);
+}
+
+.btn-auth {
+  background: #ffffff;
+  color: #000000;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.btn-auth:hover {
+  background: #5A7863;
+  color: #ffffff;
+}
+
+.btn-auth-2 {
+  background: #ffffff;
+  color: #000000;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.btn-auth-2:hover {
+  background: #5A7863;
+  color: #ffffff;
+}
+
+/* =========================
+   LINKS
+========================= */
+.auth-links {
+  text-align: center;
+  font-size: 13px;
+}
+
+.auth-links a {
+  display: block;
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 6px;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .auth-wrapper {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+}
+
+/* =========================
+   MOBILE & TABLET
+========================= */
+@media (max-width: 991px) {
+
+  /* Wrapper jadi satu kolom */
+  .auth-wrapper {
+    flex-direction: column;
+  }
+
+  /* HILANGKAN LEFT SIDE */
+  .auth-left {
+    display: none;
+  }
+
+  /* RIGHT SIDE FULL WIDTH */
+  .auth-right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  /* Card tetap di tengah */
+  .auth-card,
+  .auth-card-2 {
+    max-width: 420px;
+    margin: auto;
+  }
+}
+

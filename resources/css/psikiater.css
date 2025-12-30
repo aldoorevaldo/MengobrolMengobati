@@ -1,0 +1,258 @@
+.psikiater-page {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+/* GRADIENT BACKGROUND */
+.psikiater-section {
+  min-height: 100vh;
+  padding: 10px 0 10px;
+}
+
+.psikiater-section {
+  min-height: 100vh;
+  padding: 10px 0 10px;
+}
+
+/* MAIN CARD */
+.page-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+  padding: 20px 20px 10px 28px;
+}
+
+/* HEADER */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0b3b36;
+  margin: 0;
+}
+
+.back-link {
+  background: #5A7863;
+  color: #ffffff;
+  border: 1px solid #d9ece8;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all .25s ease;
+}
+
+.back-link:hover {
+  background: #4e6b58;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* DOCTOR CARD */
+.doctor-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+.doctor-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  background: #f0f0f0;
+}
+
+/* TEXT */
+.doctor-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  color: #0b3b36;
+}
+
+.doctor-meta {
+  font-size: 0.9rem;
+  color: #6c8c88;
+}
+
+.doctor-desc {
+  font-size: 0.85rem;
+  color: #6c8c88;
+  margin-top: 8px;
+}
+
+/* BUTTON */
+.btn-book {
+  background: #5A7863;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-book:hover {
+  background: #4e6b58;
+  color: #ffffff;
+}
+
+/* EMPTY STATE */
+.no-data {
+  text-align: center;
+  padding: 48px 0;
+  color: #6b7773;
+}
+
+/* =====================
+   PROFILE PAGE
+===================== */
+
+.profile-card {
+  padding: 28px;
+}
+
+.profile-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.profile-avatar-lg img,
+.avatar-initial-lg {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e6f4f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 800;
+  color: #0b3b36;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0b3b36;
+  margin: 0;
+}
+
+.profile-hospital {
+  font-size: 15px;
+  color: #6c8c88;
+  font-weight: 500;
+}
+
+.profile-desc {
+  font-size: 14px;
+  color: #5f7d7a;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-save {
+  background: #0b3b36;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-save:hover {
+  background: #0f514b;
+  color: #ffffff;
+}
+
+.btn-back {
+  background: #5A7863;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #7a9a87;
+  color: #ffffff;
+}
+
+/* detail grid */
+.profile-detail-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 14px 20px;
+}
+
+.profile-detail-grid .label {
+  font-weight: 600;
+  color: #0b3b36;
+}
+
+.profile-detail-grid .value {
+  color: #455f5c;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-actions {
+    margin-top: 12px;
+  }
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 26px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

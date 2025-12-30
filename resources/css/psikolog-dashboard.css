@@ -1,0 +1,90 @@
+body {
+  background: #f4f7fb;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* TOPBAR */
+.psy-topbar {
+  background: #5A7863;
+  color: #fff;
+  padding: 14px 0;
+}
+
+.psy-brand strong { font-size: 16px; }
+.psy-brand .muted { opacity: .7; margin-left: 6px; }
+
+/* AVATAR */
+.psy-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eaf4ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d9e7de;
+}
+
+/* HEADER */
+.psy-header {
+  margin-bottom: 24px;
+}
+.psy-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.psy-sub { color: rgb(0, 0, 0); }
+.psy-muted {
+    color: #889;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+/* CARD */
+.psy-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+
+.psy-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.psy-card-head h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.psy-count {
+  font-size: 15px;
+  color: #666;
+}
+
+.btn-chat {
+  background: #0b3b36;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 5.2px 12px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.btn-chat:hover {
+  background: #0f514b;
+  color: #ffffff;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #5A7863;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 20px 0px;
+}

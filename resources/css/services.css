@@ -1,0 +1,116 @@
+/* PAGE BASE */
+body.services-page {
+  background: linear-gradient(135deg, #ACDFC2 0%, #81B1D9 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* SECTION */
+.services-section {
+  padding: 100px 10px 30px;
+}
+
+/* TITLE */
+.services-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 55px;
+
+  text-shadow:
+    0 12px 30px rgba(0,0,0,0.55),
+    0 4px 10px rgba(0,0,0,0.3);
+}
+
+.services-subtitle {
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-top: -50px;
+
+  text-shadow:
+    0 12px 30px rgba(0,0,0,0.55),
+    0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* CARD */
+.service-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 10px 5px 10px 5px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+}
+
+/* IMAGE */
+.service-card img {
+  width: 100%;
+  max-width: 155px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* TEXT */
+.service-card h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b3b36;
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #000000;
+}
+
+/* BUTTON */
+.service-card a {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0b3b36;
+  text-decoration: none;
+  position: relative;
+}
+
+.service-card a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #0b3b36;
+  transition: width 0.25s ease;
+  margin: auto;
+}
+
+.service-card a:hover::after {
+  width: 100%;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #0B3B36;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 20px 0px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .services-title {
+    font-size: 32px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,103 @@
+/* =========================
+   ADMIN BASE
+========================= */
+body {
+  background: #f4f7f7;
+  font-family: "Poppins", system-ui, sans-serif;
+  color: #24333a;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+.admin-topbar {
+  background: #5A7863;
+  color: #fff;
+  padding: 14px 0;
+}
+
+.admin-topbar .brand {
+  font-size: 16px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.admin-content {
+  padding: 10px 20px 0px 20px;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+.page-header h3 {
+  color: #000000;
+}
+
+/* =========================
+   STAT CARD
+========================= */
+.stat-card {
+  display: block;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22.3px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+.stat-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: #000000;
+  transition: transform 0.25s ease;
+}
+
+/* =========================
+   ACTION CARD
+========================= */
+.action-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  font-weight: 600;
+  color: #0b3b36;
+  text-decoration: none;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+.action-card:hover {
+  background: #0b3b36;
+  color: #ffffff;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #5A7863;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 20px 0px;
+}

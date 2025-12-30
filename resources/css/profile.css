@@ -1,0 +1,159 @@
+/* profile.css */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================= PROFILE PAGE ================= */
+.profile-page {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================= PROFILE CARD ================= */
+.profile-card {
+  border-radius: 20px;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* ================= BUTTON CUSTOM ================= */
+.profile-card .btn {
+  border-radius: 12px;
+  font-weight: 500;
+  padding: 10px 16px;
+}
+
+.profile-card .btn-primary {
+  background: #0b3b36;
+  border: none;
+}
+
+.profile-card .btn-primary:hover {
+  background: #0f514b;
+}
+
+.profile-card .btn-success {
+  background: #5A7863;
+  border: none;
+}
+
+.profile-card .btn-success:hover {
+  background: #7a9a87;
+}
+
+.profile-card .btn-danger {
+  background: #c0392b;
+  border: none;
+}
+
+.profile-card .btn-danger:hover {
+  background: #e74c3c;
+}
+
+/* ================= BOOKING CARD ================= */
+.booking-card {
+  border-radius: 18px;
+  border: none;
+  padding: 20px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+}
+
+/* ================= BADGE STATUS ================= */
+.badge-status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-confirmed {
+  background: #d1f2eb;
+  color: #0b5345;
+}
+
+.badge-rejected {
+  background: #fdecea;
+  color: #922b21;
+}
+
+/* ================= TABLE ================= */
+.booking-card table {
+  font-size: 14px;
+}
+
+.booking-card thead {
+  background: #f6fbfb;
+}
+
+.booking-card th {
+  font-weight: 600;
+  color: #0b3b36;
+}
+
+.booking-card .btn-chat {
+  background: #0b3b36;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.booking-card .btn-chat:hover {
+  background: #0f514b;
+  color: #ffffff;
+}
+
+.btn-back {
+  background: #5A7863;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+
+.btn-back:hover {
+  background: #7a9a87;
+  border: none;
+}
+
+.py-5 {
+  height: 100vh;
+}
+
+.card { border-radius: 12px; }
+.table td, .table th { vertical-align: middle; }
+
+.user-icon-big {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #eef7f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table thead {
+  background-color: #f0f9f8;
+}
+
+.booking-card .btn {
+  background-color: #0b3b36;
+  color: #fff;
+}

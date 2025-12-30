@@ -1,0 +1,132 @@
+/* =========================
+   PROFILE PAGE
+========================= */
+.profile-page {
+  background: #f4f7fb;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+/* CARD */
+.profile-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.20);
+}
+
+/* HEADER */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* AVATAR */
+.profile-avatar img,
+.avatar-initial {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #0b3b36;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+/* INFO */
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+/* ACTION */
+.profile-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* DETAILS */
+.profile-details {
+  margin-top: 20px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  padding: 10px 0;
+  border-bottom: 1px solid #eef2f1;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  font-weight: 600;
+  color: #000000;
+}
+
+.detail-row .value {
+  color: #000000;
+}
+
+.btn-edit {
+  background: #0b3b36;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-edit:hover {
+  background: #0f514b;
+  color: #ffffff;
+}
+
+.btn-back {
+  background: #5A7863;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #7a9a87;
+  color: #ffffff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,101 @@
+:root {
+  --primary: #0b3b36;
+  --soft: #eef6f5;
+  --white: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #ACDFC2 0%, #81B1D9 100%);
+}
+
+/* PAGE */
+body.about-page {
+  background: var(--gradient-primary);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--primary);
+}
+
+/* HERO */
+.about-hero {
+  padding: 100px 1px 0px;
+  color: #ffffff;
+
+  text-shadow:
+    0 12px 30px rgba(0,0,0,0.55),
+    0 4px 10px rgba(0,0,0,0.3);
+}
+
+.about-title {
+  font-size: 30px;
+  font-weight: 800;
+  margin-top: 30px;
+}
+
+.about-subtitle {
+  max-width: 1110px;        /* biar tidak terlalu panjang */
+  text-align: justify;     /* RATA KIRI KANAN */
+  text-justify: inter-word;
+  line-height: 1.5;
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+
+/* SECTION */
+.section-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0px 0 10px;
+
+  text-shadow:
+    0 12px 30px rgba(0,0,0,0.55),
+    0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* TEAM */
+.team-section {
+  padding: 0px 0 1px;
+}
+
+.team-card {
+  background: #ffffff;
+  height: 100%;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(0,0,0,0.15);
+}
+
+.team-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.team-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.team-card span {
+  font-size: 15px;
+  color: #181717;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #0B3B36;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 20px 0px;
+}
