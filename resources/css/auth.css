@@ -178,51 +178,44 @@
   text-decoration: underline;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 992px) {
-  .auth-wrapper {
-    flex-direction: column;
-  }
-
-  .auth-left {
-    padding: 40px;
-    text-align: center;
-  }
-
-  .brand {
-    justify-content: center;
-  }
-}
-
-/* =========================
-   MOBILE & TABLET
-========================= */
-@media (max-width: 991px) {
-
-  /* Wrapper jadi satu kolom */
-  .auth-wrapper {
-    flex-direction: column;
-  }
-
-  /* HILANGKAN LEFT SIDE */
   .auth-left {
     display: none;
   }
+}
 
-  /* RIGHT SIDE FULL WIDTH */
-  .auth-right {
-    width: 100%;
-    min-height: 100vh;
-    padding: 24px;
-  }
-
-  /* Card tetap di tengah */
-  .auth-card,
-  .auth-card-2 {
-    max-width: 420px;
-    margin: auto;
+@media (max-width: 992px) {
+  .auth-wrapper {
+    justify-content: center;
+    align-items: center;
   }
 }
 
+@media (max-width: 992px) {
+  .auth-right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .auth-card,
+  .auth-card-2 {
+    width: 100%;
+    max-width: 380px;
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card,
+  .auth-card-2 {
+    padding: 24px 18px;
+  }
+
+  .auth-card h3,
+  .auth-card-2 h3 {
+    font-size: 22px;
+  }
+}

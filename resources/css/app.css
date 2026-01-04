@@ -12,6 +12,7 @@ body{
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background: var(--bg-gradient);
   color: var(--white);
+  display: flex;
 }
 
 /* =========================
@@ -123,54 +124,77 @@ body{
 }
 
 /* =========================
-   MOBILE
+   NAVBAR RESPONSIVE
 ========================= */
+
+/* Tablet & Mobile */
 @media (max-width: 992px) {
 
-  /* Navbar container jadi kolom */
-  .navbar-custom .container {
-    flex-direction: column;
-    align-items: center;
+  /* Navbar tetap rapi */
+  .navbar-custom {
+    padding: 10px 0;
   }
 
   /* Brand di tengah */
   .navbar-brand {
     margin: 0 auto;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  /* Toggler di kanan */
+  /* Logo */
+  .navbar-logo {
+    height: 36px;
+  }
+
+  .brand-text {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  /* Toggler di kanan atas */
   .navbar-toggler {
-    position: absolute;
-    right: 16px;
-    top: 18px;
+    border: none;
+    box-shadow: none;
   }
 
-  /* Menu turun ke bawah */
+  /* Menu collapse */
   .navbar-collapse {
-    width: 100%;
     margin-top: 12px;
-  }
+    background: var(--nav-solid);
+    border-radius: 16px;
+    padding: 14px 150px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
 
+  /* Menu list */
   .navbar-nav {
     gap: 12px;
     text-align: center;
   }
 
   .nav-link {
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 15px;
+    color: #ffffff !important;
+  }
+
+  .nav-link.active {
+    font-weight: 700;
+    text-decoration: underline;
   }
 }
 
+/* Mobile kecil */
 @media (max-width: 576px) {
 
   .navbar-logo {
-    height: 34px;
+    height: 32px;
   }
 
   .brand-text {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .nav-link {
@@ -178,11 +202,3 @@ body{
   }
 }
 
-@media (max-width: 992px) {
-  .navbar-collapse {
-    background: rgba(11, 59, 54, 0.95);
-    border-radius: 12px;
-    padding: 12px 0;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-  }
-}

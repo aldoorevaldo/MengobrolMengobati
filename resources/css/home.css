@@ -4,7 +4,7 @@
 
 .hero {
   position: relative;
-  display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
 
@@ -131,11 +131,14 @@
   color: #ffffff;
 }
 
-/* FOOTER */
 .site-footer {
+  margin-top: auto;
+  text-align: center;
+
   color: #ffffff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
+
   text-shadow:
     0 12px 30px rgba(0,0,0,0.55),
     0 4px 10px rgba(0,0,0,0.3);
