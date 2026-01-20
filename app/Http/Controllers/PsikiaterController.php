@@ -23,15 +23,15 @@ class PsikiaterController extends Controller
     public function list()
     {
         try {
-            $psikiaters = Psikiater::select('id','name','photo','hospital','work_start','work_end','description')->get()
-                ->map(function($p){
-                    $p->photo = $p->photo ? asset('storage/'.$p->photo) : null;
-                    return $p;
-                });
-            return response()->json(['success'=>true,'data'=>$psikiaters], 200);
+            if (class_exists(Psikiater::class)) {
+                $psikiaters = Psikiater::select('id','name','photo','hospital','work_start','work_end','description')->get();
+            } else {
+                $psikiaters = DB::table('psikiaters')->select('id','name','photo','hospital','work_start','work_end','description')->get();
+            }
+            return response()->json(['success' => true, 'data' => $psikiaters], 200);
         } catch (\Throwable $e) {
             Log::error('Psikiater list error: '.$e->getMessage());
-            return response()->json(['success'=>false,'message'=>'Server error'], 500);
+            return response()->json(['success' => false, 'message' => 'Server error'], 500);
         }
     }
 
@@ -50,7 +50,7 @@ class PsikiaterController extends Controller
         $psikiater = Psikiater::where('user_id', $user->id)->first();
 
         if (! $psikiater) {
-            return redirect()->route('home')->with('error','Anda tidak memiliki akses ke dashboard psikiater.');
+            return redirect()->route('home')->with('error','You do not have access to the psikiater dashboard.');
         }
 
         $bookings = Booking::with('user')
@@ -71,7 +71,7 @@ class PsikiaterController extends Controller
             'booking' => $booking,
             'action' => 'approve',
             'disabled' => $booking->status !== 'pending',
-            'message' => $booking->status !== 'pending' ? 'Booking sudah diproses.' : null
+            'message' => $booking->status !== 'pending' ? 'Booking has been processed.' : null
         ]);
     }
 
@@ -85,7 +85,7 @@ class PsikiaterController extends Controller
             'booking' => $booking,
             'action' => 'reject',
             'disabled' => $booking->status !== 'pending',
-            'message' => $booking->status !== 'pending' ? 'Booking sudah diproses.' : null
+            'message' => $booking->status !== 'pending' ? 'Booking has been processed.' : null
         ]);
     }
 
@@ -96,7 +96,7 @@ class PsikiaterController extends Controller
         if (! $psikiater || $booking->psikiater_id !== $psikiater->id) abort(403,'Unauthorized');
 
         if ($booking->status !== 'pending') {
-            return redirect()->route('psikiater.dashboard')->with('error','Booking tidak dapat di-approve (bukan pending).');
+            return redirect()->route('psikiater.dashboard')->with('error','Booking cannot be approved (not pending).');
         }
 
         if ($request->filled('notes')) $booking->notes = $request->input('notes');
@@ -115,10 +115,10 @@ class PsikiaterController extends Controller
             }
         } catch (\Throwable $e) {
             Log::error("PSIKIATER APPROVE: mail exception: ".$e->getMessage());
-            return redirect()->route('psikiater.dashboard')->with('success','Booking dikonfirmasi, tapi notifikasi email gagal. Cek log.');
+            return redirect()->route('psikiater.dashboard')->with('success','Booking has been confirmed, but email notification failed. Check log.');
         }
 
-        return redirect()->route('psikiater.dashboard')->with('success','Booking berhasil dikonfirmasi.');
+        return redirect()->route('psikiater.dashboard')->with('success','Booking has been confirmed.');
     }
 
     public function reject(Request $request, Booking $booking)
@@ -128,7 +128,7 @@ class PsikiaterController extends Controller
         if (! $psikiater || $booking->psikiater_id !== $psikiater->id) abort(403,'Unauthorized');
 
         if ($booking->status !== 'pending') {
-            return redirect()->route('psikiater.dashboard')->with('error','Booking tidak dapat ditolak (bukan pending).');
+            return redirect()->route('psikiater.dashboard')->with('error','Booking cannot be rejected (not pending).');
         }
 
         if ($request->filled('notes')) $booking->notes = $request->input('notes');
@@ -149,7 +149,7 @@ class PsikiaterController extends Controller
             Log::warning("PSIKIATER REJECT: mail exception: ".$e->getMessage());
         }
 
-        return redirect()->route('psikiater.dashboard')->with('success','Booking telah ditolak (user diberi tahu bila email tersedia).');
+        return redirect()->route('psikiater.dashboard')->with('success','Booking has been rejected (user notified if email is available).');
     }
 
     public function finish(Request $request, Booking $booking)
@@ -163,10 +163,10 @@ class PsikiaterController extends Controller
             $booking->save();
 
             Log::info("PSIKIATER FINISH: booking {$booking->id} finished by psikiater_user_id={$user->id}");
-            return redirect()->route('psikiater.dashboard')->with('success','Booking telah diselesaikan.');
+            return redirect()->route('psikiater.dashboard')->with('success','Booking has been finished.');
         } catch (\Throwable $e) {
-            Log::error("PSIKIATER FINISH: gagal menyelesaikan booking {$booking->id}: ".$e->getMessage());
-            return redirect()->back()->with('error','Gagal menyelesaikan booking. Cek log.');
+            Log::error("PSIKIATER FINISH: failed to finish booking {$booking->id}: ".$e->getMessage());
+            return redirect()->back()->with('error','Failed to finish booking. Check log.');
         }
     }
     public function profile(Request $request)
@@ -185,78 +185,84 @@ class PsikiaterController extends Controller
     public function updateProfile(Request $request)
     {
         $user = $request->user();
-        $psikiater = \App\Models\Psikiater::where('user_id', $user->id)->firstOrFail();
+        $psikiater = Psikiater::where('user_id', $user->id)->firstOrFail();
+
         $validator = \Validator::make($request->all(), [
-            'name' => 'required|string|max:191',
-            'hospital' => 'nullable|string|max:255',
-            'work_start' => 'nullable|string',
-            'work_end' => 'nullable|string',
+            'name'        => 'required|string|max:191',
+            'hospital'    => 'nullable|string|max:255',
+            'work_start'  => 'nullable|string',
+            'work_end'    => 'nullable|string',
             'description' => 'nullable|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'remove_photo' => 'nullable|in:1'
+            'photo'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'remove_photo'=> 'nullable|in:1',
         ]);
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $data = $validator->validated();
-        $timesErrors = [];
-        $workStart = null;
-        $workEnd = null;
+        $workStart  = null;
+        $workEnd    = null;
+        $timeErrors = [];
 
         if (!empty($data['work_start'])) {
+            $s = trim($data['work_start']);
             try {
-                $cs = Carbon::createFromFormat('H:i', trim($data['work_start']));
-                $workStart = $cs->format('H:i');
-            } catch (\Throwable $e) {
+                $dt = Carbon::createFromFormat('H:i', $s);
+                $workStart = $dt->format('H:i');
+            } catch (\Throwable $e1) {
                 try {
-                    $cs2 = Carbon::createFromFormat('H:i:s', trim($data['work_start']));
-                    $workStart = $cs2->format('H:i');
+                    $dt2 = Carbon::createFromFormat('H:i:s', $s);
+                    $workStart = $dt2->format('H:i');
                 } catch (\Throwable $e2) {
-                    $timesErrors['work_start'] = 'The work start field must match the format HH:MM.';
+                    $timeErrors['work_start'] = 'Work start must be in HH:MM format.';
                 }
             }
         }
 
         if (!empty($data['work_end'])) {
+            $s = trim($data['work_end']);
             try {
-                $ce = Carbon::createFromFormat('H:i', trim($data['work_end']));
-                $workEnd = $ce->format('H:i');
-            } catch (\Throwable $e) {
+                $dt = Carbon::createFromFormat('H:i', $s);
+                $workEnd = $dt->format('H:i');
+            } catch (\Throwable $e1) {
                 try {
-                    $ce2 = Carbon::createFromFormat('H:i:s', trim($data['work_end']));
-                    $workEnd = $ce2->format('H:i');
+                    $dt2 = Carbon::createFromFormat('H:i:s', $s);
+                    $workEnd = $dt2->format('H:i');
                 } catch (\Throwable $e2) {
-                    $timesErrors['work_end'] = 'The work end field must match the format HH:MM.';
+                    $timeErrors['work_end'] = 'Work end must be in HH:MM format.';
                 }
             }
         }
 
-        if (!empty($timesErrors)) {
-            return redirect()->back()->withErrors($timesErrors)->withInput();
+        if (!empty($timeErrors)) {
+            return redirect()->back()->withErrors($timeErrors)->withInput();
         }
-
         if ($request->filled('remove_photo') && $request->input('remove_photo') == '1') {
-            $psikiater->deletePhotoFile();
+            if ($psikiater->photo && Storage::disk('public')->exists($psikiater->photo)) {
+                Storage::disk('public')->delete($psikiater->photo);
+            }
             $psikiater->photo = null;
         }
-
         if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
-            $psikiater->deletePhotoFile();
-            $file = $request->file('photo');
-            $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+            if ($psikiater->photo && Storage::disk('public')->exists($psikiater->photo)) {
+                Storage::disk('public')->delete($psikiater->photo);
+            }
+
+            $file     = $request->file('photo');
+            $ext      = $file->getClientOriginalExtension();
+            $filename = Str::random(20).'.'.$ext;
             $path = $file->storeAs('psikiaters', $filename, 'public');
             $psikiater->photo = $path;
         }
-        $psikiater->name = $data['name'];
-        $psikiater->hospital = $data['hospital'] ?? null;
-        $psikiater->work_start = $workStart; // null if not provided
-        $psikiater->work_end = $workEnd;
+        $psikiater->name        = $data['name'];
+        $psikiater->hospital    = $data['hospital'] ?? null;
+        $psikiater->work_start  = $workStart;
+        $psikiater->work_end    = $workEnd;
         $psikiater->description = $data['description'] ?? null;
-
         $psikiater->save();
 
-        return redirect()->route('psikiater.profile')->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->route('psikiater.profile')->with('success', 'Profile updated successfully.');
     }
 
 }

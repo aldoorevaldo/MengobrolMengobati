@@ -135,7 +135,7 @@
             <small class="text-muted">JPG / PNG / WEBP • Max 5MB</small>
 
             {{-- PREVIEW --}}
-            <div class="mt-2">
+            {{-- <div class="mt-2">
               @if($psikolog->photo)
                 <img src="{{ asset('storage/'.$psikolog->photo) }}"
                      style="width:96px;height:96px;border-radius:50%;object-fit:cover;">
@@ -145,7 +145,7 @@
                   {{ strtoupper(substr($psikolog->name ?? 'U',0,1)) }}
                 </div>
               @endif
-            </div>
+            </div> --}}
 
             @error('photo')
               <div class="text-danger small mt-1">{{ $message }}</div>
