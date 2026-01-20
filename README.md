@@ -1,26 +1,75 @@
-# MengobrolMengobati
+# 🧠 MengobrolMengobati
 
-## 📌 Deskripsi Project
-**MengobrolMengobati** adalah sebuah **Public App Mental Health Support** yang bertujuan untuk menyediakan ruang aman dan nyaman bagi pengguna dalam mendapatkan informasi, dukungan, serta layanan terkait kesehatan mental.  
-Aplikasi ini dirancang untuk membantu masyarakat dalam meningkatkan kesadaran akan pentingnya kesehatan mental, serta mempermudah akses terhadap tenaga profesional seperti psikolog dan psikiater melalui platform digital.
+**MengobrolMengobati** adalah sebuah **Public Mental Health Support Application** berbasis web yang dirancang untuk membantu masyarakat dalam memperoleh dukungan, informasi, dan layanan terkait kesehatan mental secara mudah, aman, dan terjangkau melalui platform digital.
 
-Dengan pendekatan teknologi web modern, MengobrolMengobati diharapkan dapat menjadi media pendukung yang informatif, edukatif, dan mudah digunakan oleh berbagai kalangan.
+Aplikasi ini menghubungkan pengguna dengan layanan kesehatan mental, menyediakan edukasi yang relevan, serta menjadi ruang pendukung untuk meningkatkan kesadaran akan pentingnya kesehatan mental di era digital.
+
+---
+
+## 📖 Deskripsi
+Kesehatan mental merupakan aspek penting dalam kehidupan manusia yang sering kali kurang mendapatkan perhatian. **MengobrolMengobati** hadir sebagai solusi digital yang bertujuan untuk:
+- Memberikan akses informasi kesehatan mental yang valid dan edukatif
+- Menyediakan media pendukung bagi pengguna untuk berkonsultasi
+- Menjadi platform penghubung antara masyarakat dan tenaga profesional
+
+Aplikasi ini dikembangkan dengan pendekatan teknologi modern dan user-friendly, sehingga dapat digunakan oleh berbagai kalangan.
 
 ---
 
 ## 🎯 Tujuan Pengembangan
-Project ini dibuat untuk memenuhi **Tugas Besar Rekayasa Perangkat Lunak 2 (RPL 2)**, dengan fokus pada:
-- Penerapan konsep rekayasa perangkat lunak
-- Pengembangan aplikasi berbasis web
-- Penerapan arsitektur dan framework modern
-- Kerja sama tim dalam pengembangan sistem
+Project ini dibuat untuk memenuhi **Tugas Besar Rekayasa Perangkat Lunak 2 (RPL 2)** dengan tujuan:
+- Mengimplementasikan tahapan pengembangan perangkat lunak
+- Menerapkan konsep analisis, perancangan, dan implementasi sistem
+- Melatih kerja tim dalam pengembangan aplikasi berbasis web
+- Menggunakan framework modern sesuai standar industri
 
 ---
 
-## 🛠️ Framework & Teknologi
-Aplikasi ini dikembangkan menggunakan:
-- **Laravel** – sebagai framework backend utama
-- **Vite** – sebagai build tool frontend untuk pengelolaan asset yang cepat dan modern
+## ✨ Fitur Utama
+Berikut adalah fitur-fitur utama yang dirancang dalam aplikasi **MengobrolMengobati**:
+
+### 👤 Manajemen Pengguna
+- Registrasi dan login pengguna
+- Manajemen profil pengguna
+- Hak akses berdasarkan peran (user / admin / psikolog)
+
+### 🧑‍⚕️ Layanan Psikolog & Psikiater
+- Daftar psikolog dan psikiater
+- Detail profil tenaga profesional
+- Informasi jadwal praktik dan ketersediaan
+
+### 💬 Konsultasi & Interaksi
+- Fitur konsultasi berbasis chat
+- Riwayat percakapan pengguna
+- Sistem pengajuan konsultasi
+
+### 📚 Edukasi Kesehatan Mental
+- Artikel kesehatan mental
+- Informasi gangguan mental umum
+- Konten edukatif untuk meningkatkan awareness
+
+### 🛠️ Admin Panel
+- Manajemen data pengguna
+- Manajemen data psikolog & psikiater
+- Manajemen konten edukasi
+- Monitoring aktivitas sistem
+
+---
+
+## 🧩 Teknologi yang Digunakan
+Project ini dibangun menggunakan teknologi berikut:
+
+- **Laravel**  
+  Framework backend PHP untuk pengelolaan logika aplikasi dan database
+
+- **Vite**  
+  Frontend build tool untuk pengelolaan asset yang cepat dan efisien
+
+- **MySQL**  
+  Database relasional untuk penyimpanan data aplikasi
+
+- **Bootstrap / Tailwind CSS**  
+  Untuk desain antarmuka yang responsif dan modern
 
 ---
 
@@ -34,8 +83,19 @@ Aplikasi ini dikembangkan menggunakan:
 
 ---
 
-## 📂 Catatan
-Project ini bersifat akademik dan dikembangkan sebagai bagian dari proses pembelajaran.  
-Segala data dan fitur yang disediakan digunakan untuk keperluan edukasi.
+## 📂 Status Project
+📌 **Status**: Dalam tahap pengembangan  
+📌 **Jenis Project**: Akademik (Tugas Besar RPL 2)
+
+---
+
+## ⚠️ Disclaimer
+Aplikasi ini dibuat untuk keperluan **pembelajaran dan akademik**.  
+Informasi yang disediakan tidak dimaksudkan sebagai pengganti diagnosis atau penanganan medis profesional secara langsung.
+
+---
+
+## 📄 Lisensi
+Project ini dikembangkan untuk keperluan pendidikan dan tidak digunakan untuk tujuan komersial.
 
 ---
