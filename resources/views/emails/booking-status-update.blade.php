@@ -1,18 +1,18 @@
 @component('mail::message')
-# Perubahan Status Booking
+# Booking Status Changes
 
-Halo {{ $booking->user->name ?? '-' }},
+Hello {{ $booking->user->name ?? '-' }},
 
-Booking Anda dengan 
-**{{ $booking->psikiater->name ?? $booking->psikolog->name ?? '-' }}**  
-pada **{{ $booking->scheduled_at ? \Carbon\Carbon::parse($booking->scheduled_at)->translatedFormat('d M Y, H:i') : '-' }}**
-telah berubah status menjadi **{{ ucfirst($booking->status) }}**.
+Your Booking with
+**{{ $booking->psikiater->name ?? $booking->psikolog->name ?? '-' }}**
+at **{{ $booking->scheduled_at ? \Carbon\Carbon::parse($booking->scheduled_at)->translatedFormat('d M Y, H:i') : '-' }}**
+has changed status to **{{ ucfirst($booking->status) }}**.
 
 @if(isset($booking->provider_notes) && $booking->provider_notes)
-**Catatan dari Provider:**  
+**Provider Notes:**
 {{ $booking->provider_notes }}
 @endif
 
-Terima kasih,<br>
+Thank You,<br>
 {{ config('app.name') }}
 @endcomponent

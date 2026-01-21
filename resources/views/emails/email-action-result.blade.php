@@ -20,16 +20,16 @@
 
         @if($booking)
         <hr>
-        <p><strong>Detail Booking:</strong></p>
+        <p><strong>Booking Details:</strong></p>
         <ul>
-          <li>Pasien: {{ $booking->user->name ?? '-' }}</li>
+          <li>Patient: {{ $booking->user->name ?? '-' }}</li>
           <li>Service: {{ $booking->service ?? '-' }}</li>
-          <li>Jadwal: {{ \Carbon\Carbon::parse($booking->scheduled_at)->translatedFormat('d M Y, H:i') }}</li>
-          <li>Status sekarang: <strong>{{ ucfirst($booking->status) }}</strong></li>
+          <li>Schedule: {{ \Carbon\Carbon::parse($booking->scheduled_at)->translatedFormat('d M Y, H:i') }}</li>
+          <li>Status now: <strong>{{ ucfirst($booking->status) }}</strong></li>
         </ul>
         @endif
 
-        <a href="{{ route('home') }}" class="btn btn-secondary">Kembali ke Home</a>
+        <a href="{{ route('home') }}" class="btn btn-secondary">Back to Home</a>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 @component('mail::message')
-# Booking Baru
+# New Booking
 
 @php
     // tentukan provider display name & tipe
@@ -34,21 +34,21 @@
     }
 @endphp
 
-Halo **{{ $providerName }}**,
+Hello **{{ $providerName }}**,
 
-Seorang pasien telah membuat booking untuk Anda. Mohon cek aplikasi untuk melihat detail dan untuk menerima atau menolak permintaan ini.
+A patient has made a booking for you. Please check the app to view the details and to accept or decline this request.
 
-— Informasi singkat:
-- **Pasien:** {{ $booking->user->name ?? '-' }}
-- **Email pasien:** {{ $booking->user->email ?? '-' }}
+— Booking Details:
+- **Patient:** {{ $booking->user->name ?? '-' }}
+- **Email:** {{ $booking->user->email ?? '-' }}
 - **Service:** {{ $booking->service ?? '-' }}
-- **Jadwal:** {{ $booking->scheduled_at ? \Carbon\Carbon::parse($booking->scheduled_at)->translatedFormat('d M Y, H:i') : '-' }}
+- **Scheduled At:** {{ $booking->scheduled_at ? \Carbon\Carbon::parse($booking->scheduled_at)->translatedFormat('d M Y, H:i') : '-' }}
 
 @if(isset($booking->notes) && $booking->notes)
-- **Catatan pasien:**  
+- **Patient Notes:**
   {{ $booking->notes }}
 @endif
 
-Terima kasih,<br>
+Thank You,<br>
 {{ config('app.name') }}
 @endcomponent
