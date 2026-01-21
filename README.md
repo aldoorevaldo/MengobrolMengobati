@@ -21,7 +21,6 @@ Project ini dibuat untuk memenuhi **Tugas Besar Rekayasa Perangkat Lunak 2 (RPL 
 - Mengimplementasikan tahapan pengembangan perangkat lunak
 - Menerapkan konsep analisis, perancangan, dan implementasi sistem
 - Melatih kerja tim dalam pengembangan aplikasi berbasis web
-- Menggunakan framework modern sesuai standar industri
 
 ---
 
@@ -83,19 +82,6 @@ Project ini dibangun menggunakan teknologi berikut:
 
 ---
 
-## 📂 Status Project
-📌 **Status**: Dalam tahap pengembangan  
-📌 **Jenis Project**: Akademik (Tugas Besar RPL 2)
-
----
-
 ## ⚠️ Disclaimer
 Aplikasi ini dibuat untuk keperluan **pembelajaran dan akademik**.  
 Informasi yang disediakan tidak dimaksudkan sebagai pengganti diagnosis atau penanganan medis profesional secara langsung.
-
----
-
-## 📄 Lisensi
-Project ini dikembangkan untuk keperluan pendidikan dan tidak digunakan untuk tujuan komersial.
-
----
