@@ -1,6 +1,6 @@
 @extends('layouts.booking-layout')
 
-@section('title','Buat Booking - ' . ($ps->name ?? 'Provider'))
+@section('title','Create Booking - ' . ($ps->name ?? 'Provider'))
 
 @vite(['resources/css/create.css'])
 @section('content')

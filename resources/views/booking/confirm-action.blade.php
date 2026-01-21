@@ -1,12 +1,11 @@
 {{-- resources/views/bookings/confirm-action.blade.php --}}
 @extends('layouts.booking-layout')
 
-@section('title', $action === 'approve' ? 'Setujui Booking' : 'Tolak Booking')
+@section('title', $action === 'approve' ? 'Approve Booking' : 'Reject Booking')
 
 @section('content')
 <div class="card p-4">
-    <h4>{{ $action === 'approve' ? 'Setujui Booking' : 'Tolak Booking' }}</h4>
-
+    <h4>{{ $action === 'approve' ? 'Approve Booking' : 'Reject Booking' }}</h4>
     {{-- Flash messages (success/error) --}}
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -15,8 +14,8 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <p>Anda akan
-        <strong>{{ $action === 'approve' ? 'menyetujui' : 'menolak' }}</strong>
+    <p>You will
+        <strong>{{ $action === 'approve' ? 'approve' : 'reject' }}</strong>
         booking berikut:
     </p>
 
@@ -43,25 +42,25 @@
     @if($booking->status !== 'pending')
         @unless(session('success'))
             <div class="alert alert-warning">
-                Booking tidak dapat diproses karena status bukan pending.
+                Booking cannot be processed because status is not pending.
             </div>
         @endunless
 
-        <a href="{{ $dashboardRoute }}" class="btn btn-secondary">Kembali ke Dashboard</a>
+        <a href="{{ $dashboardRoute }}" class="btn btn-secondary">Back to Dashboard</a>
     @else
         <form id="confirm-form" method="POST" action="{{ $selectedRoute }}">
             @csrf
 
             <div class="mb-3">
-                <label class="form-label">Catatan (opsional)</label>
+                <label class="form-label">Notes (optional)</label>
                 <textarea name="notes" class="form-control" rows="3"></textarea>
             </div>
 
             <div class="d-flex gap-2">
                 <button id="confirm-btn" class="btn {{ $action === 'approve' ? 'btn-success' : 'btn-danger' }}">
-                    {{ $action === 'approve' ? 'Setujui' : 'Tolak' }}
+                    {{ $action === 'approve' ? 'Approve' : 'Reject' }}
                 </button>
-                <a href="{{ $dashboardRoute }}" class="btn btn-outline-secondary">Batal</a>
+                <a href="{{ $dashboardRoute }}" class="btn btn-outline-secondary">Cancel</a>
             </div>
         </form>
     @endif
@@ -76,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function () {
     if (btn) {
       btn.disabled = true;
-      btn.innerText = 'Memproses...';
+      btn.innerText = 'Processing...';
     }
   });
 });
