@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2026 at 12:17 PM
+-- Generation Time: Jan 21, 2026 at 07:57 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.29
 
@@ -49,8 +49,8 @@ CREATE TABLE `bookings` (
 INSERT INTO `bookings` (`id`, `email_token`, `user_id`, `psikiater_id`, `psikolog_id`, `type`, `service`, `status`, `scheduled_at`, `notes`, `created_at`, `updated_at`) VALUES
 (54, NULL, 18, 12, NULL, 'psikiater', 'ingin memutihkan kulit', 'rejected', '2025-12-22 15:00:00', 'TOLONG SAYAA', '2025-12-21 04:37:58', '2025-12-21 04:43:10'),
 (55, NULL, 19, NULL, 12, 'psikolog', 'SAYA INGIN CERDAS', 'finished', '2025-12-24 12:00:00', 'OKEE', '2025-12-21 04:39:06', '2025-12-21 04:44:33'),
-(56, NULL, 18, 12, NULL, 'psikiater', 'SAKIT BIJI', 'confirmed', '2025-12-23 17:00:00', 'TOLONGGGGG', '2025-12-21 04:41:21', '2025-12-21 04:42:34'),
-(57, NULL, 19, NULL, 12, 'psikolog', 'SAYA BODOH', 'rejected', '2026-01-01 18:00:00', 'WLEEEEE', '2025-12-21 04:42:10', '2025-12-21 04:43:35'),
+(56, NULL, 18, 12, NULL, 'psikiater', 'sakit mental', 'confirmed', '2025-12-23 17:00:00', 'TOLONGGGGG', '2025-12-21 04:41:21', '2026-01-21 07:13:55'),
+(57, NULL, 19, NULL, 12, 'psikolog', 'saya kurang cerdas', 'rejected', '2026-01-01 18:00:00', 'WLEEEEE', '2025-12-21 04:42:10', '2026-01-21 07:13:55'),
 (58, NULL, 20, 12, NULL, 'psikiater', 'Takut tambah dewasa', 'finished', '2025-12-22 07:00:00', NULL, '2025-12-21 08:22:47', '2025-12-29 02:31:09'),
 (59, NULL, 20, NULL, 12, 'psikolog', 'tes', 'confirmed', '2025-12-29 17:00:00', NULL, '2025-12-29 02:43:18', '2025-12-29 02:43:49');
 
@@ -118,22 +118,7 @@ CREATE TABLE `group_messages` (
 --
 
 INSERT INTO `group_messages` (`id`, `therapy_group_id`, `user_id`, `message`, `created_at`, `updated_at`) VALUES
-(31, 1, 19, 'WOI BAHLIL', '2025-12-21 04:44:55', '2025-12-21 04:44:55'),
-(32, 1, 18, 'APA ANJING', '2025-12-21 04:45:17', '2025-12-21 04:45:17'),
-(33, 1, 19, 'ELU ANJING', '2025-12-21 04:45:39', '2025-12-21 04:45:39'),
-(34, 1, 20, 'woi', '2025-12-21 08:26:25', '2025-12-21 08:26:25'),
-(35, 1, 20, 'tes', '2025-12-22 08:24:20', '2025-12-22 08:24:20'),
-(36, 1, 20, 'halo', '2025-12-22 08:27:52', '2025-12-22 08:27:52'),
-(37, 2, 20, 'tes', '2025-12-23 00:43:15', '2025-12-23 00:43:15'),
-(38, 3, 20, 'tes', '2025-12-23 00:43:22', '2025-12-23 00:43:22'),
-(39, 1, 22, 'woi', '2025-12-23 00:44:58', '2025-12-23 00:44:58'),
-(40, 2, 22, 'woi', '2025-12-23 00:45:08', '2025-12-23 00:45:08'),
-(41, 3, 22, 'woi', '2025-12-23 00:45:14', '2025-12-23 00:45:14'),
-(42, 1, 20, 'tes', '2025-12-23 00:51:16', '2025-12-23 00:51:16'),
-(43, 1, 20, 'hello', '2025-12-26 23:08:14', '2025-12-26 23:08:14'),
-(44, 1, 20, 'tes', '2025-12-28 04:30:48', '2025-12-28 04:30:48'),
-(45, 1, 20, '1', '2025-12-28 04:30:50', '2025-12-28 04:30:50'),
-(46, 2, 20, 'halo', '2025-12-28 05:26:14', '2025-12-28 05:26:14');
+(47, 1, 20, 'hi', '2026-01-21 00:46:30', '2026-01-21 00:46:30');
 
 -- --------------------------------------------------------
 
@@ -156,18 +141,8 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `booking_id`, `sender_type`, `sender_id`, `content`, `created_at`, `updated_at`) VALUES
-(10, 55, 'psikolog', 17, 'WOI GIBRANN', '2025-12-21 04:44:01', '2025-12-21 04:44:01'),
-(11, 55, 'user', 19, 'APA ANJING', '2025-12-21 04:44:17', '2025-12-21 04:44:17'),
-(12, 59, 'psikolog', 17, 'halo ada yang bisa saya bantu?', '2025-12-29 04:03:04', '2025-12-29 04:03:04'),
-(13, 59, 'user', 20, 'halo dok, saya', '2025-12-29 04:18:22', '2025-12-29 04:18:22'),
-(14, 59, 'user', 20, 'tes', '2025-12-29 04:35:58', '2025-12-29 04:35:58'),
-(15, 59, 'psikolog', 17, 'iya kenapa?', '2025-12-29 04:59:48', '2025-12-29 04:59:48'),
-(16, 59, 'user', 20, 'aku ingin berak dok', '2025-12-29 05:00:50', '2025-12-29 05:00:50'),
-(17, 59, 'user', 20, 'puki', '2025-12-29 05:10:31', '2025-12-29 05:10:31'),
-(18, 59, 'user', 20, 'halow', '2025-12-29 05:13:27', '2025-12-29 05:13:27'),
-(19, 59, 'user', 20, 'halow', '2025-12-29 05:13:46', '2025-12-29 05:13:46'),
-(20, 59, 'psikolog', 17, 'tesss', '2026-01-20 04:19:32', '2026-01-20 04:19:32'),
-(21, 59, 'user', 20, 'doks', '2026-01-20 05:13:16', '2026-01-20 05:13:16');
+(22, 59, 'psikolog', 17, 'halo, ada yang bisa saya bantu?', '2026-01-21 00:47:54', '2026-01-21 00:47:54'),
+(23, 59, 'user', 20, 'halo dok, saya ingin konsultasi', '2026-01-21 00:48:38', '2026-01-21 00:48:38');
 
 -- --------------------------------------------------------
 
@@ -302,8 +277,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `u
 (1, 'Admin Utama', 'admin@example.com', '$2y$12$h98aYTRb95KE7HHXEe05X.GyuOMoIPtlnojVtD1Ly7QG5g3XjpYBy', 'admin', '2025-11-15 16:28:51', '2025-11-15 09:32:53'),
 (16, 'Dr. Hendra Saputra, Sp.KJ', 'randtwn@gmail.com', '$2y$12$tAcwltObrBkjECLIB1qy8.dxRPfcj9ExdIpRvSAvFYmxaj59C3iLK', 'psikiater', '2025-12-21 04:34:59', '2025-12-21 04:34:59'),
 (17, 'Dr. Andi Pratama, M.Psi., Psikolog', 'radtwn@gmail.com', '$2y$12$mUFNzUIDi9MAgofYnDVBSODDNiufbh6xK5RGGmU20hz5onj/yH5pu', 'psikolog', '2025-12-21 04:36:25', '2025-12-21 04:36:25'),
-(18, 'Bahlil Tabung Gas', 'akunff2370@gmail.com', '$2y$12$hy/5d.Tpw1pKBjQJo91NmOXALK7FVVePwP2G2zq6d5SChy162Er4.', 'user', '2025-12-21 04:36:58', '2025-12-21 04:36:58'),
-(19, 'Gibran Rakanyut', 'gibran@gmail.com', '$2y$12$zizv//dQQYhvFzN6Ky8D6.y/gqfqvho0F/GPogEBI6Wd1p8iL6A2G', 'user', '2025-12-21 04:38:29', '2025-12-21 04:38:29'),
+(18, 'Iwan Kurniawan', 'akunff2370@gmail.com', '$2y$12$hy/5d.Tpw1pKBjQJo91NmOXALK7FVVePwP2G2zq6d5SChy162Er4.', 'user', '2025-12-21 04:36:58', '2025-12-21 04:36:58'),
+(19, 'Gibran Fahmi', 'gibran@gmail.com', '$2y$12$zizv//dQQYhvFzN6Ky8D6.y/gqfqvho0F/GPogEBI6Wd1p8iL6A2G', 'user', '2025-12-21 04:38:29', '2025-12-21 04:38:29'),
 (20, 'Doo', '1966deez@gmail.com', '$2y$12$hs3KyhfSCdBIWI0TMPWikOrNtE4ekBgoTLUS9xSRAmzmGo9Codt9m', 'user', '2025-12-21 08:21:22', '2025-12-21 08:21:22'),
 (22, 'rev', 'dooaldodoo023@gmail.com', '$2y$12$x3/E9KyDeH3xNQQcA3ETj.AgcATRfs5aplTu6PFpCvGbpYvV1ExIC', 'user', '2025-12-23 00:44:46', '2025-12-23 00:44:46');
 
@@ -417,13 +392,13 @@ ALTER TABLE `group_members`
 -- AUTO_INCREMENT for table `group_messages`
 --
 ALTER TABLE `group_messages`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `payments`
