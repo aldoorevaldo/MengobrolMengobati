@@ -32,7 +32,7 @@ class ChatController extends Controller
 
         // Only allow chat when booking confirmed
         if ($booking->status !== 'confirmed') {
-            return redirect()->back()->with('error', 'Chat hanya tersedia untuk booking yang telah dikonfirmasi.');
+            return redirect()->back()->with('error', 'Chat is only available for confirmed bookings.');
         }
 
         // pass a few things to view
@@ -96,7 +96,7 @@ class ChatController extends Controller
 
         // Only allow chat for confirmed bookings
         if ($booking->status !== 'confirmed') {
-            return response()->json(['error' => 'Chat hanya tersedia untuk booking yang telah dikonfirmasi.'], 422);
+            return response()->json(['error' => 'Chat is only available for confirmed bookings.'], 422);
         }
 
         $senderType = $isPsikolog ? 'psikolog' : 'user';
@@ -137,7 +137,7 @@ class ChatController extends Controller
         }
 
         if ($booking->status !== 'confirmed') {
-            return redirect()->back()->with('error', 'Booking tidak bisa diakhiri karena status bukan confirmed.');
+            return redirect()->back()->with('error', 'The booking cannot be terminated because the status is not confirmed.');
         }
 
         try {
@@ -146,10 +146,10 @@ class ChatController extends Controller
 
             \Log::info("CHAT: booking {$booking->id} finished by psikolog_user_id={$user->id}");
 
-            return redirect()->route('psikolog.dashboard')->with('success', 'Sesi telah diakhiri. Slot waktu kini tersedia kembali.');
+            return redirect()->route('psikolog.dashboard')->with('success', 'The session has ended. The time slot is now available again.');
         } catch (\Throwable $e) {
-            \Log::error("CHAT: gagal mengakhiri sesi booking {$booking->id}: " . $e->getMessage());
-            return redirect()->back()->with('error', 'Gagal mengakhiri sesi. Cek log.');
+            \Log::error("CHAT: failed to end the booking session {$booking->id}: " . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to end the session. Check the log.');
         }
     }
 }

@@ -24,7 +24,7 @@ class BookingController extends Controller
         }
 
         if (!$ps) {
-            abort(404, "Provider tidak ditemukan.");
+            abort(404, "Provider not found.");
         }
         return view('booking.create', [
             'ps'    => $ps,
@@ -45,7 +45,7 @@ class BookingController extends Controller
                 $ps = Psikolog::findOrFail($providerId);
             } else {
                 $psRow = DB::table('psikologs')->where('id', $providerId)->first();
-                if (!$psRow) abort(404, 'Psikolog tidak ditemukan.');
+                if (!$psRow) abort(404, 'Psikolog not found.');
                 $ps = $psRow;
             }
         } else {
@@ -125,21 +125,21 @@ class BookingController extends Controller
         $scheduled = \Carbon\Carbon::createFromFormat('Y-m-d H:i', $request->date . ' ' . $request->time);
 
         if ($scheduled->lte(\Carbon\Carbon::now())) {
-            return back()->withErrors(['time' => 'Jadwal harus berada di masa depan.'])->withInput();
+            return back()->withErrors(['time' => 'Schedule must be in the future.'])->withInput();
         }
         try {
             if ($type === 'psikolog') {
                 $providerId = $request->input('psikolog_id');
                 $provider = DB::table('psikologs')->where('id', $providerId)->first();
-                if (!$provider) return back()->withErrors(['general' => 'Psikolog tidak ditemukan.'])->withInput();
+                if (!$provider) return back()->withErrors(['general' => 'Psikolog not found.'])->withInput();
             } else {
                 $providerId = $request->input('psikiater_id');
                 $provider = Psikiater::find($providerId);
-                if (!$provider) return back()->withErrors(['general' => 'Psikiater tidak ditemukan.'])->withInput();
+                if (!$provider) return back()->withErrors(['general' => 'Psikiater not found.'])->withInput();
             }
         } catch (\Throwable $e) {
             \Log::error("STORE: error fetching provider: ".$e->getMessage(), ['ex'=>$e]);
-            return back()->withErrors(['general' => 'Terjadi kesalahan saat mengambil data provider. Cek log.'])->withInput();
+            return back()->withErrors(['general' => 'An error occurred while retrieving provider data. Check the log.'])->withInput();
         }
         $ws = $provider->work_start ?? '09:00:00';
         $we = $provider->work_end ?? '17:00:00';
@@ -150,7 +150,7 @@ class BookingController extends Controller
         $workEnd   = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $scheduled->toDateString() . ' ' . $we);
 
         if ($scheduled->lt($workStart) || $scheduled->gte($workEnd)) {
-            return back()->withErrors(['time' => 'Waktu pemesanan berada di luar jam kerja provider.'])->withInput();
+            return back()->withErrors(['time' => 'Booking time is outside provider working hours.'])->withInput();
         }
 
         DB::beginTransaction();
@@ -162,7 +162,7 @@ class BookingController extends Controller
 
             if ($q->lockForUpdate()->exists()) {
                 DB::rollBack();
-                return back()->withErrors(['time' => 'Slot sudah dipesan. Silakan pilih waktu lain.'])->withInput();
+                return back()->withErrors(['time' => 'Slot already booked. Please choose another time.'])->withInput();
             }
 
             $data = [
@@ -204,7 +204,7 @@ class BookingController extends Controller
                 \Log::error("STORE: mail send failed: ".$e->getMessage(), ['ex'=>$e, 'booking_id'=>$booking->id]);
             }
 
-            return redirect()->route('profile.show')->with('success', 'Booking berhasil dibuat. Tunggu konfirmasi provider.');
+            return redirect()->route('profile.show')->with('success', 'Booking successfully created. Wait for provider confirmation.');
 
         } catch (\Throwable $e) {
             DB::rollBack();
@@ -212,7 +212,7 @@ class BookingController extends Controller
                 'ex' => $e,
                 'input' => $request->all()
             ]);
-            $msg = env('APP_DEBUG') ? $e->getMessage() : 'Terjadi kesalahan saat menyimpan booking.';
+            $msg = env('APP_DEBUG') ? $e->getMessage() : 'An error occurred while saving the booking.';
             return back()->withErrors(['general' => $msg])->withInput();
         }
     }

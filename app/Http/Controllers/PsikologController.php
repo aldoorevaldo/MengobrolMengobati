@@ -11,7 +11,7 @@ use App\Models\Psikolog;
 use App\Mail\BookingStatusUpdatedMail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;                     
+use Carbon\Carbon;
 
 class PsikologController extends Controller
 {
@@ -57,7 +57,7 @@ class PsikologController extends Controller
         }
 
         if (! $psikolog) {
-            return redirect()->route('home')->with('error', 'Anda tidak memiliki akses dashboard psikolog.');
+            return redirect()->route('home')->with('error', 'You do not have access to the psikolog dashboard.');
         }
         $bookings = Booking::with('user')
             ->where('psikolog_id', $psikolog->id)
@@ -79,7 +79,7 @@ class PsikologController extends Controller
             'booking' => $booking,
             'action' => 'approve',
             'disabled' => $booking->status !== 'pending',
-            'message' => $booking->status !== 'pending' ? 'Booking sudah diproses.' : null,
+            'message' => $booking->status !== 'pending' ? 'Booking has been processed.' : null,
         ]);
     }
 
@@ -95,7 +95,7 @@ class PsikologController extends Controller
             'booking' => $booking,
             'action' => 'reject',
             'disabled' => $booking->status !== 'pending',
-            'message' => $booking->status !== 'pending' ? 'Booking sudah diproses.' : null,
+            'message' => $booking->status !== 'pending' ? 'Booking has been processed.' : null,
         ]);
     }
 
@@ -108,7 +108,7 @@ class PsikologController extends Controller
         }
 
         if ($booking->status !== 'pending') {
-            return redirect()->route('psikolog.dashboard')->with('error', 'Booking tidak dapat di-approve (bukan pending).');
+            return redirect()->route('psikolog.dashboard')->with('error', 'Booking cannot be approved (not pending).');
         }
         if ($request->filled('notes')) {
             $booking->notes = $request->input('notes');
@@ -121,16 +121,16 @@ class PsikologController extends Controller
             $to = optional($booking->user)->email;
             if ($to && filter_var($to, FILTER_VALIDATE_EMAIL)) {
                 Mail::to($to)->send(new BookingStatusUpdatedMail($booking));
-                Log::info("Psikolog APPROVE: Mail sent to {$to} for booking_id={$booking->id}");
+                Log::info("Psikolog APPROVE: Mail sent to {$to} for booking {$booking->id}");
             } else {
-                Log::warning("Psikolog APPROVE: user email kosong/invalid for booking_id={$booking->id}");
+                Log::warning("Psikolog APPROVE: invalid email for booking {$booking->id}");
             }
         } catch (\Throwable $e) {
-            Log::error("Psikolog APPROVE: gagal kirim email untuk booking_id={$booking->id}: ".$e->getMessage());
-            return redirect()->route('psikolog.dashboard')->with('success', 'Booking telah dikonfirmasi, namun notifikasi email gagal dikirim. Cek log.');
+            Log::error("Psikolog APPROVE: failed to send email for booking {$booking->id}: ".$e->getMessage());
+            return redirect()->route('psikolog.dashboard')->with('success', 'Booking has been confirmed, but email notification failed. Check log.');
         }
 
-        return redirect()->route('psikolog.dashboard')->with('success', 'Booking telah dikonfirmasi dan pengguna diberi tahu via email (jika tersedia).');
+        return redirect()->route('psikolog.dashboard')->with('success', 'Booking has been confirmed and user notified via email (if available).');
     }
 
     public function reject(Request $request, Booking $booking)
@@ -142,7 +142,7 @@ class PsikologController extends Controller
         }
 
         if ($booking->status !== 'pending') {
-            return redirect()->route('psikolog.dashboard')->with('error', 'Booking tidak dapat ditolak (bukan pending).');
+            return redirect()->route('psikolog.dashboard')->with('error', 'Booking cannot be rejected (not pending).');
         }
 
         if ($request->filled('notes')) {
@@ -158,15 +158,15 @@ class PsikologController extends Controller
             $to = optional($booking->user)->email;
             if ($to && filter_var($to, FILTER_VALIDATE_EMAIL)) {
                 Mail::to($to)->send(new BookingStatusUpdatedMail($booking));
-                Log::info("Psikolog REJECT: Mail sent to {$to} for booking_id={$booking->id}");
+                Log::info("Psikolog REJECT: Mail sent to {$to} for booking {$booking->id}");
             } else {
-                Log::warning("Psikolog REJECT: user email kosong/invalid for booking_id={$booking->id}");
+                Log::warning("Psikolog REJECT: invalid email for booking {$booking->id}");
             }
         } catch (\Throwable $e) {
-            Log::warning("Psikolog REJECT: gagal kirim email untuk booking_id={$booking->id}: ".$e->getMessage());
+            Log::warning("Psikolog REJECT: failed to send email for booking {$booking->id}: ".$e->getMessage());
         }
 
-        return redirect()->route('psikolog.dashboard')->with('success', 'Booking telah ditolak dan pengguna diberi tahu via email (jika tersedia).');
+        return redirect()->route('psikolog.dashboard')->with('success', 'Booking has been rejected and user notified via email (if available).');
     }
 
     public function finish(Request $request, Booking $booking)
@@ -178,7 +178,7 @@ class PsikologController extends Controller
         }
 
         if ($booking->status !== 'confirmed') {
-            return redirect()->route('psikolog.dashboard')->with('error', 'Booking tidak dapat diakhiri karena status bukan confirmed.');
+            return redirect()->route('psikolog.dashboard')->with('error', 'Booking cannot be finished because status is not confirmed.');
         }
 
         try {
@@ -186,10 +186,10 @@ class PsikologController extends Controller
             $booking->save();
 
             Log::info("Psikolog FINISH: booking_id={$booking->id} finished by psikolog_user_id={$user->id}");
-            return redirect()->route('psikolog.dashboard')->with('success', 'Sesi telah diakhiri. Slot waktu kini tersedia kembali.');
+            return redirect()->route('psikolog.dashboard')->with('success', 'The session has ended. The time slot is now available again.');
         } catch (\Throwable $e) {
             Log::error("Psikolog FINISH ERROR: ".$e->getMessage(), ['ex'=>$e]);
-            return redirect()->route('psikolog.dashboard')->with('error', 'Gagal mengakhiri sesi. Cek log.');
+            return redirect()->route('psikolog.dashboard')->with('error', 'Failed to end the session. Check log.');
         }
     }
 
@@ -251,7 +251,7 @@ class PsikologController extends Controller
                     $dt2 = Carbon::createFromFormat('H:i:s', $s);
                     $workStart = $dt2->format('H:i');
                 } catch (\Throwable $e2) {
-                    $timeErrors['work_start'] = 'Jam mulai harus berformat HH:MM.';
+                    $timeErrors['work_start'] = 'Work start must be in HH:MM format.';
                 }
             }
         }
@@ -266,7 +266,7 @@ class PsikologController extends Controller
                     $dt2 = Carbon::createFromFormat('H:i:s', $s);
                     $workEnd = $dt2->format('H:i');
                 } catch (\Throwable $e2) {
-                    $timeErrors['work_end'] = 'Jam selesai harus berformat HH:MM.';
+                    $timeErrors['work_end'] = 'Work end must be in HH:MM format.';
                 }
             }
         }
@@ -298,7 +298,7 @@ class PsikologController extends Controller
         $psikolog->description = $data['description'] ?? null;
         $psikolog->save();
 
-        return redirect()->route('psikolog.profile')->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->route('psikolog.profile')->with('success', 'Profile has been updated.');
     }
 
 }

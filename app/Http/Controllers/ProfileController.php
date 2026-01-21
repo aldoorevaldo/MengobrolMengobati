@@ -53,6 +53,6 @@ class ProfileController extends Controller
 
         DB::table('users')->where('id', $user->id)->update($data);
 
-        return redirect()->route('profile.show')->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->route('profile.show')->with('success', 'Profile has been updated.');
     }
 }

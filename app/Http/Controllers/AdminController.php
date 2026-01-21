@@ -93,7 +93,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.users')
-            ->with('success', 'User berhasil dihapus.');
+            ->with('success', 'User has been deleted.');
     }
     public function psikiater()
     {
@@ -145,7 +145,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.psikiater')
-            ->with('success', 'Psikiater berhasil ditambahkan dan bisa langsung login.');
+            ->with('success', 'Psikiater has been added and can log in immediately.');
     }
 
     public function destroyPsikiater($id)
@@ -155,7 +155,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.psikiater')
-            ->with('success', 'Psikiater berhasil dihapus.');
+            ->with('success', 'Psikiater has been deleted.');
     }
     public function psikolog()
     {
@@ -207,7 +207,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.psikolog')
-            ->with('success', 'Psikolog berhasil ditambahkan dan bisa langsung login.');
+            ->with('success', 'Psikolog has been added and can log in immediately.');
     }
 
     public function destroyPsikolog($id)
@@ -217,7 +217,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.psikolog')
-            ->with('success', 'Psikolog berhasil dihapus');
+            ->with('success', 'Psikolog has been deleted');
     }
     public function bookingMenu()
     {
@@ -323,7 +323,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.therapy.groups')
-            ->with('success', 'Therapy group berhasil dibuat.');
+            ->with('success', 'Therapy group has been created.');
     }
     public function therapyGroupsDestroy($slug)
     {
@@ -338,6 +338,6 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.therapy.groups')
-            ->with('success', 'Therapy group berhasil dihapus.');
+            ->with('success', 'Therapy group has been deleted.');
     }
 }
